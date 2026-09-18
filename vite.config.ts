@@ -5,7 +5,9 @@ import { defineConfig } from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/',
+    // GitHub Pages serves this project from /Velora/, not from the domain root.
+    // Keep local development at / while generating correct asset URLs for Pages.
+    base: process.env.GITHUB_ACTIONS ? '/Velora/' : '/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
