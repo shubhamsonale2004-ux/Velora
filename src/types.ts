@@ -39,7 +39,7 @@ export interface PortfolioData {
     fullName: string;
     role: string;
     headline: string;
-    intro: string;
+    intro?: string;
     aboutHeadline: string;
     aboutBody: string;
     extendedBio?: string[];

@@ -5,8 +5,6 @@ export const portfolioData: PortfolioData = {
     fullName: 'Shubham Sonale',
     role: 'Research Writer',
     headline: 'Research and analysis, done rigorously.',
-    intro:
-      'I write clear, well-researched content grounded in careful reading and analysis.',
     aboutHeadline: 'A little about how I work',
     aboutBody:
       "I'm a research writer focused on accuracy and clear communication. With a background in mixed-methods inquiry, survey architecture, and empirical testing, I turn ambiguous questions into structured methodologies and evidence-backed recommendations that eliminate guesswork.",

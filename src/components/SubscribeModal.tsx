@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { X, Mail, Check, Sparkles } from 'lucide-react';
 
 interface SubscribeModalProps {
@@ -9,6 +9,14 @@ interface SubscribeModalProps {
 export const SubscribeModal: React.FC<SubscribeModalProps> = ({ onClose, isDark }) => {
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [onClose]);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -83,7 +91,7 @@ export const SubscribeModal: React.FC<SubscribeModalProps> = ({ onClose, isDark 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="Enter your work email address"
-                  className={`w-full px-4 py-3 rounded-lg text-sm border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
+                  className={`w-full px-4 py-3 rounded-lg text-base sm:text-sm border focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all ${
                     isDark
                       ? 'bg-[#181D2E] border-[#2A2E3A] text-white placeholder-slate-500'
                       : 'bg-slate-50 border-slate-200 text-slate-900 placeholder-slate-400'
@@ -93,7 +101,7 @@ export const SubscribeModal: React.FC<SubscribeModalProps> = ({ onClose, isDark 
 
               <button
                 type="submit"
-                className="w-full py-3 rounded-lg text-sm font-semibold bg-gradient-to-r from-blue-600 to-violet-600 text-white hover:opacity-90 transition-opacity shadow-md"
+                className="w-full py-3.5 min-h-[44px] rounded-lg text-sm font-semibold bg-gradient-to-r from-blue-600 to-violet-600 text-white hover:opacity-90 active:scale-[0.98] transition-all shadow-md cursor-pointer"
               >
                 Join the Intelligence Network
               </button>

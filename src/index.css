@@ -85,9 +85,48 @@
     padding-left: 18px;
     padding-right: 18px;
   }
+
+  /* Critical mobile optimization: Prevents iOS Safari from auto-zooming into form inputs */
+  input, select, textarea {
+    font-size: 16px !important;
+  }
 }
 
-/* Subtle, smooth custom scrollbar */
+/* Mobile swipe scroll without ugly scrollbars */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Dynamic viewport height handling to avoid mobile browser toolbar jump */
+.min-h-dvh {
+  min-height: 100vh;
+  min-height: 100dvh;
+}
+
+/* Safe area insets for modern mobile edge-to-edge displays (iPhone dynamic island / home indicator) */
+.pb-safe {
+  padding-bottom: max(1.5rem, env(safe-area-inset-bottom));
+}
+.pt-safe {
+  padding-top: max(1rem, env(safe-area-inset-top));
+}
+
+/* Smooth inertia scrolling on mobile touch containers */
+.touch-scroll {
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Desktop computer keyboard navigation focus indicators */
+:focus-visible {
+  outline: 2px solid #B8791B;
+  outline-offset: 2px;
+}
+
+/* Subtle, smooth custom scrollbar for computer browsers */
 ::-webkit-scrollbar {
   width: 7px;
   height: 7px;

@@ -35,7 +35,7 @@ export const About: React.FC = () => {
         <button
           type="button"
           onClick={() => setExpanded(!expanded)}
-          className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-medium text-[#B8791B] hover:text-[#935f15] transition-colors pt-2 cursor-pointer"
+          className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-medium text-[#B8791B] hover:text-[#935f15] transition-colors pt-2 cursor-pointer rounded px-1 focus-visible:ring-1 focus-visible:ring-[#B8791B]"
         >
           <span>{expanded ? 'Show less' : 'Read more about research principles'}</span>
           {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
@@ -43,8 +43,8 @@ export const About: React.FC = () => {
       </div>
 
       {/* 3 Pillars of Rigor */}
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-12 pt-8 border-t border-[#DEDACE]/60">
-        <div className="bg-[#F1EEE6]/50 p-5 rounded-md border border-[#DEDACE]/80">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-6 mt-10 sm:mt-12 pt-8 border-t border-[#DEDACE]/60">
+        <div className="bg-[#F1EEE6]/50 p-5 rounded-md border border-[#DEDACE]/80 transition-colors hover:bg-[#F1EEE6]/80">
           <div className="flex items-center gap-2 text-[#B8791B] text-xs font-semibold uppercase tracking-wider mb-2">
             <Scale className="w-4 h-4" />
             <span>Integrity</span>
@@ -57,7 +57,7 @@ export const About: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-[#F1EEE6]/50 p-5 rounded-md border border-[#DEDACE]/80">
+        <div className="bg-[#F1EEE6]/50 p-5 rounded-md border border-[#DEDACE]/80 transition-colors hover:bg-[#F1EEE6]/80">
           <div className="flex items-center gap-2 text-[#B8791B] text-xs font-semibold uppercase tracking-wider mb-2">
             <BookOpen className="w-4 h-4" />
             <span>Clarity</span>
@@ -70,7 +70,7 @@ export const About: React.FC = () => {
           </p>
         </div>
 
-        <div className="bg-[#F1EEE6]/50 p-5 rounded-md border border-[#DEDACE]/80">
+        <div className="bg-[#F1EEE6]/50 p-5 rounded-md border border-[#DEDACE]/80 transition-colors hover:bg-[#F1EEE6]/80">
           <div className="flex items-center gap-2 text-[#B8791B] text-xs font-semibold uppercase tracking-wider mb-2">
             <CheckCircle className="w-4 h-4" />
             <span>Impact</span>

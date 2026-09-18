@@ -1,6 +1,18 @@
 {
   "name": "Shubham Sonale | Freelance Researcher & Analyst",
   "description": "Personal portfolio of Shubham Sonale, research writer and analyst, featuring analytical methodology and Velora intelligence.",
+  "keywords": [
+    "Shubham Sonale",
+    "Research Writer",
+    "Freelance Researcher",
+    "Technology Analyst",
+    "Velora",
+    "AI Research",
+    "Technology Intelligence",
+    "Market Analysis",
+    "Mixed Methods Inquiry",
+    "Computing Architecture"
+  ],
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

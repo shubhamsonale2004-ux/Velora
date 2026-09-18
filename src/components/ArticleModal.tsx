@@ -25,11 +25,11 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose, is
     <div
       role="dialog"
       aria-modal="true"
-      className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-center justify-center p-2.5 sm:p-6 bg-black/70 backdrop-blur-sm"
       onClick={onClose}
     >
       <div
-        className={`relative w-full max-w-3xl rounded-xl border shadow-2xl p-6 sm:p-10 max-h-[90vh] overflow-y-auto ${
+        className={`relative w-full max-w-3xl rounded-xl border shadow-2xl p-4 sm:p-8 md:p-10 max-h-[92dvh] sm:max-h-[88vh] overflow-y-auto overscroll-contain touch-scroll ${
           isDark
             ? 'bg-[#121624] border-[#2A2E3A] text-[#ECEEF3]'
             : 'bg-white border-slate-200 text-slate-800'
@@ -37,11 +37,11 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose, is
         onClick={(e) => e.stopPropagation()}
       >
         {/* Top bar with back/close */}
-        <div className="flex items-center justify-between pb-6 border-b border-inherit mb-6">
+        <div className="flex items-center justify-between pb-4 sm:pb-6 border-b border-inherit mb-5 sm:mb-6">
           <button
             type="button"
             onClick={onClose}
-            className={`inline-flex items-center gap-1.5 text-xs font-medium tracking-wide uppercase px-3 py-1.5 rounded transition-colors ${
+            className={`inline-flex items-center gap-1.5 text-xs font-medium tracking-wide uppercase px-3 py-2 min-h-[44px] rounded transition-colors cursor-pointer ${
               isDark ? 'text-[#B9BDCB] hover:text-white bg-[#1A1F30]' : 'text-slate-600 hover:text-slate-900 bg-slate-100'
             }`}
           >
@@ -52,7 +52,7 @@ export const ArticleModal: React.FC<ArticleModalProps> = ({ article, onClose, is
           <button
             type="button"
             onClick={onClose}
-            className={`p-1.5 rounded transition-colors ${
+            className={`min-w-[44px] min-h-[44px] flex items-center justify-center rounded transition-colors cursor-pointer ${
               isDark ? 'text-[#B9BDCB] hover:text-white hover:bg-[#1A1F30]' : 'text-slate-500 hover:text-slate-900 hover:bg-slate-100'
             }`}
             aria-label="Close article"

@@ -55,17 +55,17 @@ export const Contact: React.FC = () => {
 
             {/* Direct contact links matching user CSS */}
             <div className="flex flex-col gap-4 items-start pt-2">
-              <div className="flex items-center gap-2.5">
+              <div className="flex items-center gap-2.5 flex-wrap">
                 <a
                   href={`mailto:${portfolioData.contact.email}`}
-                  className="inline-block text-xl text-[#B8791B] border-b border-[#B8791B] hover:text-[#935f15] hover:border-[#935f15] transition-colors"
+                  className="inline-block text-base sm:text-xl break-all sm:break-normal text-[#B8791B] border-b border-[#B8791B] hover:text-[#935f15] hover:border-[#935f15] transition-colors focus-visible:ring-1 focus-visible:ring-[#B8791B]"
                 >
                   {portfolioData.contact.email}
                 </a>
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-[#5B6472] hover:text-[#1F2733] active:bg-[#F1EEE6] rounded-md transition-colors"
+                  className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-[#5B6472] hover:text-[#1F2733] active:bg-[#F1EEE6] rounded-md transition-colors cursor-pointer"
                   title="Copy email to clipboard"
                   aria-label="Copy email address to clipboard"
                 >
@@ -81,9 +81,9 @@ export const Contact: React.FC = () => {
                 href={portfolioData.contact.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-base text-[#5B6472] border-b border-[#DEDACE] hover:text-[#1F2733] hover:border-[#1F2733] transition-colors"
+                className="inline-flex items-center gap-2 text-sm sm:text-base text-[#5B6472] border-b border-[#DEDACE] hover:text-[#1F2733] hover:border-[#1F2733] transition-colors break-all sm:break-normal min-h-[44px]"
               >
-                <Github className="w-4 h-4" />
+                <Github className="w-4 h-4 shrink-0" />
                 <span>github.com/shubhamsonale2004-ux</span>
               </a>
             </div>
@@ -151,7 +151,7 @@ export const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     placeholder="e.g. Jane Doe"
-                    className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B]"
+                    className="w-full px-3.5 py-2.5 text-base sm:text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B] focus:ring-1 focus:ring-[#B8791B] transition-all"
                   />
                 </div>
 
@@ -165,7 +165,7 @@ export const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     placeholder="you@example.com"
-                    className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B]"
+                    className="w-full px-3.5 py-2.5 text-base sm:text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B] focus:ring-1 focus:ring-[#B8791B] transition-all"
                   />
                 </div>
               </div>
@@ -179,7 +179,7 @@ export const Contact: React.FC = () => {
                   value={formData.subject}
                   onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
                   placeholder="e.g. Research Inquiry, Collaboration, or Question"
-                  className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B]"
+                  className="w-full px-3.5 py-2.5 text-base sm:text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B] focus:ring-1 focus:ring-[#B8791B] transition-all"
                 />
               </div>
 
@@ -193,14 +193,14 @@ export const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   placeholder="Your message or project question..."
-                  className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B] resize-none"
+                  className="w-full px-3.5 py-2.5 text-base sm:text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B] focus:ring-1 focus:ring-[#B8791B] transition-all resize-none"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] rounded text-sm font-medium bg-[#1F2733] text-[#FAFAF8] hover:bg-[#343e4f] active:scale-[0.98] transition-all disabled:opacity-50 cursor-pointer shadow-xs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] rounded text-sm font-medium bg-[#1F2733] text-[#FAFAF8] hover:bg-[#343e4f] active:scale-[0.98] transition-all disabled:opacity-50 cursor-pointer shadow-xs focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#1F2733]"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{isSubmitting ? 'Sending note...' : 'Send inquiry'}</span>

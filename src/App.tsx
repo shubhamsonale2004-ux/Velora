@@ -84,47 +84,47 @@ export default function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  if (currentView === 'velora') {
-    return (
-      <Suspense
-        fallback={
-          <div className="min-h-screen bg-[#0F1119] text-[#ECEEF3] flex flex-col items-center justify-center p-6 text-center">
-            <h2 className="font-serif text-3xl font-semibold text-[#ECEEF3] tracking-tight mb-2">
-              Velora
-            </h2>
-            <p className="text-sm text-[#B9BDCB] max-w-sm mb-6">
-              Loading intelligence publication...
-            </p>
-            <div className="w-7 h-7 border-2 border-[#2A2E3A] border-t-[#C9A768] rounded-full animate-spin" />
-          </div>
-        }
-      >
-        <VeloraView onBackToPortfolio={handleBackToPortfolio} />
-      </Suspense>
-    );
-  }
-
   return (
-    <div className="theme-portfolio min-h-screen flex flex-col font-sans bg-[#FAFAF8] text-[#1F2733] antialiased selection:bg-[#B8791B]/20 selection:text-[#B8791B]">
-      {/* Editorial Navigation */}
-      <Navbar
-        activeSection={activeSection}
-        onOpenVelora={handleOpenVelora}
-      />
+    <div className={currentView === 'velora' ? 'theme-velora min-h-screen' : 'theme-portfolio min-h-screen flex flex-col font-sans bg-[#FAFAF8] text-[#1F2733] antialiased selection:bg-[#B8791B]/20 selection:text-[#B8791B]'}>
+      {currentView === 'velora' ? (
+        <Suspense
+          fallback={
+            <div className="min-h-screen bg-[#0F1119] text-[#ECEEF3] flex flex-col items-center justify-center p-6 text-center">
+              <h2 className="font-serif text-3xl font-semibold text-[#ECEEF3] tracking-tight mb-2">
+                Velora
+              </h2>
+              <p className="text-sm text-[#B9BDCB] max-w-sm mb-6">
+                Loading intelligence publication...
+              </p>
+              <div className="w-7 h-7 border-2 border-[#2A2E3A] border-t-[#C9A768] rounded-full animate-spin" />
+            </div>
+          }
+        >
+          <VeloraView onBackToPortfolio={handleBackToPortfolio} />
+        </Suspense>
+      ) : (
+        <>
+          {/* Editorial Navigation */}
+          <Navbar
+            activeSection={activeSection}
+            onOpenVelora={handleOpenVelora}
+          />
 
-      {/* Main Portfolio Content with progressive content-visibility for rapid paint */}
-      <main className="flex-1">
-        <Hero />
-        <div className="content-auto">
-          <About />
-        </div>
-        <div className="content-auto">
-          <Contact />
-        </div>
-      </main>
+          {/* Main Portfolio Content with progressive content-visibility for rapid paint */}
+          <main className="flex-1">
+            <Hero />
+            <div className="content-auto">
+              <About />
+            </div>
+            <div className="content-auto">
+              <Contact />
+            </div>
+          </main>
 
-      {/* Portfolio Footer */}
-      <Footer onOpenVelora={handleOpenVelora} />
+          {/* Portfolio Footer */}
+          <Footer onOpenVelora={handleOpenVelora} />
+        </>
+      )}
     </div>
   );
 }

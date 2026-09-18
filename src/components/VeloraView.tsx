@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ArrowLeft,
   Search,
@@ -33,6 +33,24 @@ export const VeloraView: React.FC<VeloraViewProps> = ({ onBackToPortfolio }) => 
   const [searchOpen, setSearchOpen] = useState<boolean>(false);
 
   const filterOptions = ['ALL', 'AI', 'TECHNOLOGY', 'RESEARCH', 'FUTURE TECH'];
+
+  // Keyboard shortcut for computer browsers (Cmd+K, Ctrl+K, or / to search)
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        setSearchOpen(true);
+      } else if (e.key === '/' && !selectedArticle && !subscribeOpen && !searchOpen) {
+        const activeEl = document.activeElement;
+        if (activeEl?.tagName !== 'INPUT' && activeEl?.tagName !== 'TEXTAREA') {
+          e.preventDefault();
+          setSearchOpen(true);
+        }
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedArticle, subscribeOpen, searchOpen]);
 
   const filteredArticles =
     activeFilter === 'ALL'
@@ -75,27 +93,28 @@ export const VeloraView: React.FC<VeloraViewProps> = ({ onBackToPortfolio }) => 
             : 'bg-white/90 border-slate-200'
         }`}
       >
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-18 flex items-center justify-between">
+        <div className="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8 h-16 sm:h-18 flex items-center justify-between">
           {/* Left: Back to Shubham Sonale Portfolio link & Folded V Brand Logo */}
-          <div className="flex items-center gap-6">
+          <div className="flex items-center gap-2.5 sm:gap-6">
             <button
               type="button"
               onClick={onBackToPortfolio}
-              className={`text-xs font-medium inline-flex items-center gap-1.5 transition-colors cursor-pointer py-1 px-2 rounded ${
+              className={`text-xs font-medium inline-flex items-center gap-1.5 transition-colors cursor-pointer py-1.5 px-2 rounded min-h-[44px] ${
                 isDark
                   ? 'text-[#B9BDCB] hover:text-white hover:bg-[#1A2033]'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
               title="Return to Shubham Sonale Portfolio"
             >
-              <ArrowLeft className="w-3.5 h-3.5" />
-              <span>&larr; Shubham Sonale</span>
+              <ArrowLeft className="w-3.5 h-3.5 shrink-0" />
+              <span className="hidden sm:inline">&larr; Shubham Sonale</span>
+              <span className="inline sm:hidden">&larr; Back</span>
             </button>
 
             <div className="h-4 w-px bg-slate-400/20 hidden sm:block" />
 
             {/* Geometric Folded V Logo matching mockup */}
-            <div className="flex items-center gap-2.5">
+            <div className="flex items-center gap-2">
               <div className="relative w-7 h-7 flex items-center justify-center">
                 {/* Custom SVG Folded V Emblem */}
                 <svg
@@ -183,25 +202,26 @@ export const VeloraView: React.FC<VeloraViewProps> = ({ onBackToPortfolio }) => 
           </nav>
 
           {/* Right Controls: Search, Theme Toggle, Subscribe */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3">
             <button
               type="button"
               onClick={() => setSearchOpen(true)}
-              className={`p-2 rounded-full transition-colors ${
+              className={`min-w-[40px] min-h-[40px] sm:min-w-[44px] sm:min-h-[44px] flex items-center justify-center p-2 rounded-full transition-colors cursor-pointer ${
                 isDark
                   ? 'text-slate-400 hover:text-white hover:bg-[#1A2033]'
                   : 'text-slate-600 hover:text-slate-900 hover:bg-slate-100'
               }`}
-              aria-label="Search articles"
-              title="Search insights"
+              aria-label="Search articles (Press ⌘K or /)"
+              title="Search insights (⌘K or /)"
             >
               <Search className="w-4 h-4" />
+              <span className="hidden lg:inline-block ml-1.5 text-[10px] px-1.5 py-0.5 rounded bg-slate-800 text-slate-400 border border-slate-700">⌘K</span>
             </button>
 
             <button
               type="button"
               onClick={() => setIsDark(!isDark)}
-              className={`p-2 rounded-full transition-colors ${
+              className={`min-w-[40px] min-h-[40px] sm:min-w-[44px] sm:min-h-[44px] flex items-center justify-center p-2 rounded-full transition-colors cursor-pointer ${
                 isDark
                   ? 'text-amber-400 hover:bg-[#1A2033]'
                   : 'text-slate-700 hover:bg-slate-100'
@@ -215,7 +235,7 @@ export const VeloraView: React.FC<VeloraViewProps> = ({ onBackToPortfolio }) => 
             <button
               type="button"
               onClick={() => setSubscribeOpen(true)}
-              className={`px-4 py-1.5 rounded-full text-xs font-semibold tracking-wide border transition-all cursor-pointer ${
+              className={`px-3.5 sm:px-4 py-1.5 min-h-[38px] rounded-full text-xs font-semibold tracking-wide border transition-all cursor-pointer shrink-0 ${
                 isDark
                   ? 'border-slate-500 text-white hover:bg-white hover:text-[#0B0E17]'
                   : 'border-slate-900 text-slate-900 hover:bg-slate-900 hover:text-white'
@@ -387,14 +407,14 @@ export const VeloraView: React.FC<VeloraViewProps> = ({ onBackToPortfolio }) => 
               </h2>
             </div>
 
-            {/* Filter Tabs */}
-            <div className="flex items-center gap-1.5 flex-wrap">
+            {/* Filter Tabs (Horizontal swipe on phone, wraps on desktop) */}
+            <div className="flex items-center gap-1.5 overflow-x-auto pb-1 max-w-full no-scrollbar sm:flex-wrap">
               {filterOptions.map((opt) => (
                 <button
                   key={opt}
                   type="button"
                   onClick={() => setActiveFilter(opt)}
-                  className={`px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-colors ${
+                  className={`px-3 py-1.5 rounded-full text-xs font-semibold tracking-wide transition-colors shrink-0 cursor-pointer ${
                     activeFilter === opt
                       ? 'bg-blue-600 text-white'
                       : isDark
@@ -500,7 +520,7 @@ export const VeloraView: React.FC<VeloraViewProps> = ({ onBackToPortfolio }) => 
 
       {/* Velora Footer */}
       <footer
-        className={`py-12 border-t transition-colors ${
+        className={`py-12 pb-safe border-t transition-colors ${
           isDark ? 'bg-[#080B12] border-[#181E2E] text-slate-400' : 'bg-slate-100 border-slate-200 text-slate-600'
         }`}
       >
