@@ -6,15 +6,12 @@ import { defineConfig } from 'vite';
 
 const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 
-export default defineConfig(({ mode }) => {
-  // GitHub Pages publishes this repository under /Velora/. Use an explicit
-  // boolean check so values such as GITHUB_ACTIONS=false do not enable the
-  // production sub-path accidentally.
-  const isGitHubPagesBuild =
-    process.env.GITHUB_ACTIONS === 'true' && mode === 'production';
-
+export default defineConfig(() => {
   return {
-    base: isGitHubPagesBuild ? '/Velora/' : '/',
+    // Relative base path ensures all asset URLs (scripts, stylesheets, fonts)
+    // resolve correctly regardless of whether the site is hosted at:
+    // https://<user>.github.io/Velora/, https://<user>.github.io/web/, or a custom root domain.
+    base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {

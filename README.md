@@ -1,56 +1,64 @@
-# Shubham Sonale — Portfolio
+# Shubham Sonale — Portfolio & Velora Intelligence
 
-Personal portfolio website for Shubham Sonale, a research writer.
-Includes a linked page for **Velora**, a separate section for AI and
-technology research and insights.
+Personal research writer and analyst portfolio for Shubham Sonale, alongside **Velora** — an independent intelligence publication exploring advancements in artificial intelligence, technology architecture, and cognitive agents.
 
-🔗 Live site: https://shubhamsonale2004-ux.github.io/web/
+🔗 **Live Site:** [https://shubhamsonale2004-ux.github.io/Velora/](https://shubhamsonale2004-ux.github.io/Velora/)
 
-## Structure
+---
 
-```
-.
-├── index.html     Portfolio homepage (about, services, work, contact)
-├── velora.html    Velora landing page, linked from the portfolio nav
-└── styles.css     Shared stylesheet (two themes: portfolio + Velora)
-```
+## Architecture & Tech Stack
 
-## Pages
+- **Framework:** [React 19](https://react.dev/) + [Vite](https://vite.dev/)
+- **Language:** TypeScript
+- **Styling:** [Tailwind CSS v4](https://tailwindcss.com/)
+- **Typography:** Fraunces (Editorial Serif) & Work Sans (Body)
+- **Icons:** [Lucide React](https://lucide.dev/)
+- **Deployment:** [GitHub Pages](https://pages.github.com/) via GitHub Actions (`.github/workflows/static.yml`)
 
-- **index.html** — About, services, selected work, and contact info
-  (email and GitHub). Includes a "Velora" button in the navigation.
-- **velora.html** — Standalone landing page for Velora, reachable from
-  the portfolio and linking back to it.
+---
 
-## Built with
+## Local Development
 
-- HTML5 & CSS3, no build tools or frameworks
-- [Google Fonts](https://fonts.google.com/): Fraunces (headings),
-  Work Sans (body)
+1. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Running locally
+2. **Start the development server:**
+   ```bash
+   npm run dev
+   ```
+   Open [http://localhost:3000](http://localhost:3000) to view the live site.
 
-No build step needed — open `index.html` directly in a browser, or
-serve the folder with any static server, e.g.:
+3. **Build for production:**
+   ```bash
+   npm run build
+   ```
+   The production-optimized static files are compiled into the `dist/` directory with relative asset paths.
 
-```
-npx serve .
-```
+4. **Preview production build locally:**
+   ```bash
+   npm run preview
+   ```
 
-## Deployment
+---
 
-Hosted with [GitHub Pages](https://pages.github.com/), served
-directly from this repository.
+## GitHub Pages Deployment
 
-## Customizing
+This project uses an automated GitHub Actions workflow (`.github/workflows/static.yml`) that builds the Vite application and deploys the `dist/` folder on every push to `main`.
 
-- Update the email and GitHub link in the Contact section of
-  `index.html`.
-- Replace the placeholder project entries in the Work section with
-  real projects as they're completed.
-- Add more content to `velora.html` as Velora grows.
+### Enabling GitHub Actions Deployment
 
-## Contact
+If the live site shows a blank page or 404, ensure GitHub Pages is configured to use **GitHub Actions**:
 
-- Email: 
-- Git
+1. Go to your repository settings: **Settings > Pages**
+2. Under **Build and deployment > Source**, select:
+   👉 **GitHub Actions** *(instead of "Deploy from a branch")*
+3. Push a commit or go to **Actions** and manually trigger **Deploy to GitHub Pages**.
+4. GitHub Pages will build the static bundle and deploy it to `https://shubhamsonale2004-ux.github.io/Velora/`.
+
+---
+
+## License & Credits
+
+Designed and maintained by Shubham Sonale. All rights reserved.
