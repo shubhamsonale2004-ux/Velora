@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --paper: #FAFAF8;
+    --surface: #F1EEE6;
+    --ink: #1F2733;
+    --ink-soft: #5B6472;
+    --accent: #B8791B;
+    --line: #DEDACE;
+
+    --void: #0F1119;
+    --panel: #171A24;
+    --fog: #B9BDCB;
+    --paper-on-dark: #ECEEF3;
+    --brass: #C9A768;
+    --line-dark: #2A2E3A;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  body {
+    margin: 0;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+.font-serif {
+  font-family: 'Fraunces', Georgia, serif;
+}
+
+.font-sans {
+  font-family: 'Work Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Specific styling for the Warm Research Portfolio */
+.theme-portfolio {
+  background-color: #FAFAF8;
+  color: #1F2733;
+}
+
+.portfolio-container {
+  max-width: 1040px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+/* Subtle custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #DEDACE;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #B8791B;
+}
+
+/* Animations */
+@keyframes velora-reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-velora-reveal {
+  animation: velora-reveal 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 8s ease-in-out infinite;
+}
