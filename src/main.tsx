@@ -17,3 +17,6 @@ createRoot(rootElement).render(
     </ErrorBoundary>
   </StrictMode>,
 );
+
+// Flag that React application successfully mounted
+(window as unknown as { __REACT_APP_MOUNTED__?: boolean }).__REACT_APP_MOUNTED__ = true;

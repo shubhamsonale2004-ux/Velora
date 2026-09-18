@@ -10,12 +10,25 @@ export default defineConfig(() => {
   return {
     // Relative base path ensures all asset URLs (scripts, stylesheets, fonts)
     // resolve correctly regardless of whether the site is hosted at:
-    // https://<user>.github.io/Velora/, https://<user>.github.io/web/, or a custom root domain.
+    // https://<user>.github.io/Velora/, https://<user>.github.io/web/, /docs, or a custom root domain.
     base: './',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
         '@': projectRoot,
+      },
+    },
+    build: {
+      outDir: 'dist',
+      assetsDir: 'assets',
+      cssCodeSplit: false,
+      minify: 'esbuild' as const,
+      rollupOptions: {
+        output: {
+          entryFileNames: 'assets/index.js',
+          chunkFileNames: 'assets/[name].js',
+          assetFileNames: 'assets/[name].[ext]',
+        },
       },
     },
     server: {

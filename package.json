@@ -9,9 +9,9 @@
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "vite build",
+    "build": "vite build && cp -r dist/assets . && rm -rf docs && cp -r dist docs",
     "preview": "vite preview --host 0.0.0.0 --port 4173",
-    "clean": "rm -rf dist",
+    "clean": "rm -rf dist docs assets",
     "typecheck": "tsc --noEmit",
     "lint": "npm run typecheck"
   },

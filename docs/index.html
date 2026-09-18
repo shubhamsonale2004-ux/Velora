@@ -16,7 +16,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..700;1,9..144,400..700&family=Work+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <!-- Bundled stylesheet fallback for direct static server deployments -->
-    <link rel="stylesheet" href="./assets/index.css" />
+    <script type="module" crossorigin src="./assets/index.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/style.css">
   </head>
   <body class="antialiased selection:bg-amber-100 selection:text-amber-900 min-h-screen">
     <div id="root">
@@ -27,14 +28,11 @@
           Research and analysis, done rigorously.
         </p>
         <div style="width: 28px; height: 28px; border: 2.5px solid #DEDACE; border-top-color: #B8791B; border-radius: 50%; animation: velora-spin 0.65s linear infinite;"></div>
-        <style>
-          @keyframes velora-spin { to { transform: rotate(360deg); } }
-        </style>
+        <style>@keyframes velora-spin{to{transform:rotate(360deg)}}</style>
       </div>
     </div>
 
     <!-- Main Vite entry point -->
-    <script type="module" src="./src/main.tsx"></script>
 
     <!-- Fail-safe static loader: If uncompiled TypeScript cannot execute in direct static hosting (e.g. GitHub Pages serving raw main branch root), seamlessly load the bundled production assets -->
     <script>
