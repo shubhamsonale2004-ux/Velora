@@ -9,7 +9,7 @@
   },
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 3000",
-    "build": "vite build && cp -r dist/assets . && rm -rf docs && cp -r dist docs",
+    "build": "vite build && cp -r dist/assets . && cp dist/assets/style.css assets/index.css && rm -rf docs && cp -r dist docs",
     "preview": "vite preview --host 0.0.0.0 --port 4173",
     "clean": "rm -rf dist docs assets",
     "typecheck": "tsc --noEmit",

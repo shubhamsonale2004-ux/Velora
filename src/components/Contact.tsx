@@ -65,8 +65,9 @@ export const Contact: React.FC = () => {
                 <button
                   type="button"
                   onClick={handleCopy}
-                  className="p-1 text-[#5B6472] hover:text-[#1F2733] transition-colors"
+                  className="min-w-[44px] min-h-[44px] flex items-center justify-center p-2 text-[#5B6472] hover:text-[#1F2733] active:bg-[#F1EEE6] rounded-md transition-colors"
                   title="Copy email to clipboard"
+                  aria-label="Copy email address to clipboard"
                 >
                   {copied ? (
                     <Check className="w-4 h-4 text-emerald-600" />
@@ -202,7 +203,7 @@ export const Contact: React.FC = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded text-sm font-medium bg-[#1F2733] text-[#FAFAF8] hover:bg-[#343e4f] transition-all disabled:opacity-50 cursor-pointer shadow-xs"
+                className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 min-h-[44px] rounded text-sm font-medium bg-[#1F2733] text-[#FAFAF8] hover:bg-[#343e4f] active:scale-[0.98] transition-all disabled:opacity-50 cursor-pointer shadow-xs"
               >
                 <Send className="w-3.5 h-3.5" />
                 <span>{isSubmitting ? 'Sending note...' : 'Send inquiry'}</span>

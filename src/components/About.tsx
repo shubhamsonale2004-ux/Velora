@@ -35,7 +35,7 @@ export const About: React.FC = () => {
         <button
           type="button"
           onClick={() => setExpanded(!expanded)}
-          className="inline-flex items-center gap-1.5 text-sm font-medium text-[#B8791B] hover:text-[#935f15] transition-colors pt-2 cursor-pointer"
+          className="inline-flex items-center gap-1.5 min-h-[44px] text-sm font-medium text-[#B8791B] hover:text-[#935f15] transition-colors pt-2 cursor-pointer"
         >
           <span>{expanded ? 'Show less' : 'Read more about research principles'}</span>
           {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { prefetchVelora } from '../App';
 
 interface FooterProps {
   onOpenVelora: () => void;
@@ -16,14 +17,16 @@ export const Footer: React.FC<FooterProps> = ({ onOpenVelora }) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="hover:text-[#1F2733] transition-colors"
+          className="hover:text-[#1F2733] transition-colors min-h-[44px] inline-flex items-center"
         >
           Back to top ↑
         </a>
         <button
           type="button"
           onClick={onOpenVelora}
-          className="hover:text-[#B8791B] font-medium transition-colors cursor-pointer inline-flex items-center gap-1"
+          onMouseEnter={prefetchVelora}
+          onTouchStart={prefetchVelora}
+          className="hover:text-[#B8791B] font-medium transition-colors cursor-pointer min-h-[44px] inline-flex items-center gap-1"
         >
           <span>Velora</span>
           <span>→</span>

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
 import { portfolioData } from '../data/portfolioData';
+import { prefetchVelora } from '../App';
 
 interface NavbarProps {
   activeSection: string;
@@ -20,7 +21,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenVelora }) =
 
   return (
     <header className="sticky top-0 z-40 bg-[#FAFAF8]/95 backdrop-blur-xs border-b border-[#DEDACE]/70 transition-colors">
-      <div className="portfolio-container flex items-center justify-between py-6">
+      <div className="portfolio-container flex items-center justify-between py-4 md:py-5">
         {/* Author Name / Brand in Fraunces serif */}
         <a
           href="#home"
@@ -28,7 +29,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenVelora }) =
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: 'smooth' });
           }}
-          className="font-serif font-semibold text-lg text-[#1F2733] tracking-tight hover:text-[#B8791B] transition-colors"
+          className="font-serif font-semibold text-lg text-[#1F2733] tracking-tight hover:text-[#B8791B] transition-colors py-1 inline-flex items-center min-h-[44px]"
         >
           {portfolioData.person.fullName}
         </a>
@@ -46,7 +47,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenVelora }) =
                   e.preventDefault();
                   handleNavClick(item.href);
                 }}
-                className={`transition-colors ${
+                className={`py-2 transition-colors ${
                   isActive
                     ? 'text-[#1F2733] font-medium'
                     : 'text-[#5B6472] hover:text-[#1F2733]'
@@ -61,7 +62,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenVelora }) =
           <button
             type="button"
             onClick={onOpenVelora}
-            className="border border-[#1F2733] px-4 py-1.5 rounded-full text-[0.9rem] text-[#1F2733] font-medium hover:bg-[#1F2733] hover:text-[#FAFAF8] transition-all duration-150 inline-flex items-center gap-1.5 group cursor-pointer"
+            onMouseEnter={prefetchVelora}
+            onTouchStart={prefetchVelora}
+            className="border border-[#1F2733] px-4 py-1.5 min-h-[38px] rounded-full text-[0.9rem] text-[#1F2733] font-medium hover:bg-[#1F2733] hover:text-[#FAFAF8] transition-all duration-150 inline-flex items-center gap-1.5 group cursor-pointer"
             title="Open Velora AI & Technology Intelligence publication"
           >
             <span>Velora</span>
@@ -69,12 +72,14 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenVelora }) =
           </button>
         </nav>
 
-        {/* Mobile menu toggle */}
-        <div className="flex items-center gap-3 md:hidden">
+        {/* Mobile menu toggle with compliant 44px+ touch targets */}
+        <div className="flex items-center gap-2 md:hidden">
           <button
             type="button"
             onClick={onOpenVelora}
-            className="border border-[#1F2733] px-3 py-1 rounded-full text-xs font-medium text-[#1F2733]"
+            onMouseEnter={prefetchVelora}
+            onTouchStart={prefetchVelora}
+            className="border border-[#1F2733] px-3.5 min-h-[44px] rounded-full text-xs font-medium text-[#1F2733] flex items-center justify-center active:bg-[#1F2733] active:text-[#FAFAF8] transition-colors"
           >
             Velora
           </button>
@@ -82,8 +87,9 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenVelora }) =
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-[#1F2733] rounded hover:bg-[#F1EEE6]"
+            className="min-w-[44px] min-h-[44px] flex items-center justify-center text-[#1F2733] rounded-md hover:bg-[#F1EEE6] active:bg-[#E7E2D6] transition-colors"
             aria-label="Toggle navigation menu"
+            aria-expanded={mobileMenuOpen}
           >
             {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -92,7 +98,7 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenVelora }) =
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-[#FAFAF8] border-b border-[#DEDACE] px-6 py-4 space-y-3">
+        <div className="md:hidden bg-[#FAFAF8] border-b border-[#DEDACE] px-6 py-4 space-y-1 shadow-xs animate-velora-reveal">
           {portfolioData.navigation.map((item) => (
             <a
               key={item.label}
@@ -101,19 +107,21 @@ export const Navbar: React.FC<NavbarProps> = ({ activeSection, onOpenVelora }) =
                 e.preventDefault();
                 handleNavClick(item.href);
               }}
-              className="block py-1.5 text-[#5B6472] hover:text-[#1F2733] text-sm font-medium"
+              className="min-h-[44px] flex items-center text-[#5B6472] hover:text-[#1F2733] active:text-[#B8791B] text-base font-medium transition-colors"
             >
               {item.label}
             </a>
           ))}
-          <div className="pt-2 border-t border-[#DEDACE]">
+          <div className="pt-2 border-t border-[#DEDACE]/80">
             <button
               type="button"
               onClick={() => {
                 setMobileMenuOpen(false);
                 onOpenVelora();
               }}
-              className="w-full text-left py-1.5 text-[#B8791B] font-medium text-sm flex items-center justify-between"
+              onMouseEnter={prefetchVelora}
+              onTouchStart={prefetchVelora}
+              className="w-full text-left min-h-[44px] text-[#B8791B] font-medium text-base flex items-center justify-between"
             >
               <span>Explore Velora Platform</span>
               <ArrowUpRight className="w-4 h-4" />

@@ -30,14 +30,14 @@ export const Hero: React.FC = () => {
             <button
               type="button"
               onClick={() => handleScrollTo('work')}
-              className="inline-block px-6 py-3 rounded-md text-[0.95rem] font-medium bg-[#1F2733] text-[#FAFAF8] hover:-translate-y-0.5 transition-all duration-150 cursor-pointer shadow-xs"
+              className="inline-flex items-center justify-center px-6 py-3 min-h-[44px] rounded-md text-[0.95rem] font-medium bg-[#1F2733] text-[#FAFAF8] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-150 cursor-pointer shadow-xs"
             >
               View my work
             </button>
             <button
               type="button"
               onClick={() => handleScrollTo('contact')}
-              className="inline-block px-6 py-3 rounded-md text-[0.95rem] font-medium border border-[#DEDACE] text-[#1F2733] hover:-translate-y-0.5 hover:bg-[#F1EEE6]/60 transition-all duration-150 cursor-pointer"
+              className="inline-flex items-center justify-center px-6 py-3 min-h-[44px] rounded-md text-[0.95rem] font-medium border border-[#DEDACE] text-[#1F2733] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] hover:bg-[#F1EEE6]/60 transition-all duration-150 cursor-pointer"
             >
               Get in touch
             </button>
