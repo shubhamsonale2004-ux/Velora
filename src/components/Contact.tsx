@@ -7,7 +7,7 @@ export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    serviceInterest: 'Survey research',
+    subject: '',
     message: '',
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -50,7 +50,7 @@ export const Contact: React.FC = () => {
         <div className="lg:col-span-5 flex flex-col justify-between">
           <div className="space-y-6">
             <p className="text-[#5B6472] text-[1.05rem] leading-relaxed">
-              Have a research inquiry, need survey instrumentation, or want to explore an analytical engagement? Send a message or reach out directly.
+              Have a research inquiry or want to discuss an analytical topic? Send a message or reach out directly.
             </p>
 
             {/* Direct contact links matching user CSS */}
@@ -119,7 +119,7 @@ export const Contact: React.FC = () => {
                   setFormData({
                     name: '',
                     email: '',
-                    serviceInterest: 'Survey research',
+                    subject: '',
                     message: '',
                   });
                 }}
@@ -131,7 +131,7 @@ export const Contact: React.FC = () => {
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               <h3 className="font-serif font-semibold text-lg text-[#1F2733]">
-                Send a project note
+                Send a message
               </h3>
 
               {errorMsg && (
@@ -172,30 +172,27 @@ export const Contact: React.FC = () => {
 
               <div>
                 <label className="block text-xs font-medium uppercase tracking-wider text-[#5B6472] mb-1">
-                  Primary Area of Interest
+                  Subject
                 </label>
-                <select
-                  value={formData.serviceInterest}
-                  onChange={(e) => setFormData({ ...formData, serviceInterest: e.target.value })}
+                <input
+                  type="text"
+                  value={formData.subject}
+                  onChange={(e) => setFormData({ ...formData, subject: e.target.value })}
+                  placeholder="e.g. Research Inquiry, Collaboration, or Question"
                   className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B]"
-                >
-                  <option value="Survey research">Survey research &amp; design</option>
-                  <option value="Data analysis">Data analysis &amp; insight synthesis</option>
-                  <option value="Testing & QA">Testing &amp; QA heuristic audits</option>
-                  <option value="General inquiry">General inquiry / Consultation</option>
-                </select>
+                />
               </div>
 
               <div>
                 <label className="block text-xs font-medium uppercase tracking-wider text-[#5B6472] mb-1">
-                  Project Details or Question *
+                  Message *
                 </label>
                 <textarea
                   required
                   rows={4}
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  placeholder="Briefly describe your objectives, target audience, or current data challenge..."
+                  placeholder="Your message or project question..."
                   className="w-full px-3.5 py-2.5 text-sm bg-white border border-[#DEDACE] rounded text-[#1F2733] focus:outline-none focus:border-[#B8791B] resize-none"
                 />
               </div>

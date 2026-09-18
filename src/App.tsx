@@ -2,8 +2,6 @@ import React, { useState, useEffect, Suspense, lazy } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
-import { Services } from './components/Services';
-import { Work } from './components/Work';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 
@@ -43,7 +41,7 @@ export default function App() {
   useEffect(() => {
     if (currentView !== 'portfolio') return;
 
-    const sections = ['home', 'about', 'services', 'work', 'contact'];
+    const sections = ['home', 'about', 'contact'];
     let ticking = false;
 
     const handleScroll = () => {
@@ -119,12 +117,6 @@ export default function App() {
         <Hero />
         <div className="content-auto">
           <About />
-        </div>
-        <div className="content-auto">
-          <Services />
-        </div>
-        <div className="content-auto">
-          <Work />
         </div>
         <div className="content-auto">
           <Contact />

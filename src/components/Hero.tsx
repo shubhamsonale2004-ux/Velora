@@ -29,17 +29,17 @@ export const Hero: React.FC = () => {
           <div className="flex items-center gap-3.5 mt-8 flex-wrap">
             <button
               type="button"
-              onClick={() => handleScrollTo('work')}
+              onClick={() => handleScrollTo('contact')}
               className="inline-flex items-center justify-center px-6 py-3 min-h-[44px] rounded-md text-[0.95rem] font-medium bg-[#1F2733] text-[#FAFAF8] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] transition-all duration-150 cursor-pointer shadow-xs"
             >
-              View my work
+              Get in touch
             </button>
             <button
               type="button"
-              onClick={() => handleScrollTo('contact')}
+              onClick={() => handleScrollTo('about')}
               className="inline-flex items-center justify-center px-6 py-3 min-h-[44px] rounded-md text-[0.95rem] font-medium border border-[#DEDACE] text-[#1F2733] hover:-translate-y-0.5 active:translate-y-0 active:scale-[0.98] hover:bg-[#F1EEE6]/60 transition-all duration-150 cursor-pointer"
             >
-              Get in touch
+              About my approach
             </button>
           </div>
         </div>
